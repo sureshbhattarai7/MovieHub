@@ -1,4 +1,4 @@
-﻿using MovieManagementSystem.Data;
+﻿using MovieManagementSystem.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace MovieManagementSystem.Models
