@@ -15,5 +15,8 @@ namespace MovieManagementSystem.Models
 
         [Required(ErrorMessage = "Movie Biog is required!")]
         public required string Bio { get; set; }
+
+        //Relationship
+        public List<Movie> Movies { get; set; }
     }
 }

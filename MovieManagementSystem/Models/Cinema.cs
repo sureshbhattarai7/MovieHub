@@ -15,5 +15,8 @@ namespace MovieManagementSystem.Models
 
         [Required(ErrorMessage = "Movie Description is required!")]
         public required string Description { get; set; }
+
+        //Relationship
+        public List<Movie> Movies { get; set; }
     }
 }
