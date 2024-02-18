@@ -60,14 +60,12 @@ namespace MovieManagementSystem.Migrations
                         name: "FK_Actors_Cinemas_CinemaId",
                         column: x => x.CinemaId,
                         principalTable: "Cinemas",
-                        principalColumn: "CinemaId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CinemaId");
                     table.ForeignKey(
                         name: "FK_Actors_Producers_ProducerId",
                         column: x => x.ProducerId,
                         principalTable: "Producers",
-                        principalColumn: "ProducerId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ProducerId");
                 });
 
             migrationBuilder.CreateTable(
@@ -93,14 +91,13 @@ namespace MovieManagementSystem.Migrations
                         name: "FK_Movies_Cinemas_CinemaId",
                         column: x => x.CinemaId,
                         principalTable: "Cinemas",
-                        principalColumn: "CinemaId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CinemaId"
+                        );
                     table.ForeignKey(
                         name: "FK_Movies_Producers_ProducerId",
                         column: x => x.ProducerId,
                         principalTable: "Producers",
-                        principalColumn: "ProducerId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ProducerId");
                 });
 
             migrationBuilder.CreateTable(
@@ -117,14 +114,12 @@ namespace MovieManagementSystem.Migrations
                         name: "FK_Actors_Movies_Actors_ActorId",
                         column: x => x.ActorId,
                         principalTable: "Actors",
-                        principalColumn: "ActorId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ActorId");
                     table.ForeignKey(
                         name: "FK_Actors_Movies_Movies_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movies",
-                        principalColumn: "MovieId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "MovieId");
                 });
 
             migrationBuilder.CreateIndex(
