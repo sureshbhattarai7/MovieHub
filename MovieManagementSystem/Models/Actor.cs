@@ -9,26 +9,29 @@ namespace MovieManagementSystem.Models
         public int ActorId { get; set; }
 
         [Required(ErrorMessage = "Actor Picture is required!")]
-        public required string ProfilePictureUrl { get; set; }
+        [Display(Name = "Actor Picture")]
+        public string? ProfilePictureUrl { get; set; }
 
         [Required(ErrorMessage = "Actor Name is required!")]
-        public required string FullName { get; set; }
+        [Display(Name = "Actor Full Name")]
+        public string? FullName { get; set; }
 
         [Required(ErrorMessage = "Actor Bio is required!")]
-        public required string Bio { get; set; }
+        [Display(Name = "Actor Bio")]
+        public string? Bio { get; set; }
 
         //Relationship
-        public List<Actor_Movie> Actors_Movies { get; set; }
+        public List<Actor_Movie>? Actors_Movies { get; set; }
 
         //Cinema
         public int CinemaId { get; set; }
         [ForeignKey("CinemaId")]
-        public Cinema Cinema { get; set; }
+        public Cinema? Cinema { get; set; }
 
         //Producer
         public int ProducerId { get; set; }
         [ForeignKey("ProducerId")]
-        public Producer Producer { get; set; }
+        public Producer? Producer { get; set; }
 
     }
 }

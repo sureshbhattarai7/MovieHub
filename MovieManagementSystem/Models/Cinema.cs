@@ -8,15 +8,18 @@ namespace MovieManagementSystem.Models
         public int CinemaId { get; set; }
 
         [Required(ErrorMessage = "Cinema Picture is required!")]
-        public required string CinemaLogo { get; set; }
+        [Display(Name = "Cinema Logo")]
+        public string? CinemaLogo { get; set; }
 
         [Required(ErrorMessage = "Cinema Name is required!")]
-        public required string CinemaName { get; set; }
+        [Display(Name = "Cinema Name")]
+        public string? CinemaName { get; set; }
 
-        [Required(ErrorMessage = "Movie Description is required!")]
-        public required string Description { get; set; }
+        [Required(ErrorMessage = "Cinema Description is required!")]
+        [Display(Name = "Cinema Description")]
+        public string? Description { get; set; }
 
         //Relationship
-        public List<Movie> Movies { get; set; }
+        public List<Movie>? Movies { get; set; }
     }
 }

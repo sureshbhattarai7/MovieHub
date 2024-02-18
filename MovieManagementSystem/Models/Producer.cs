@@ -8,15 +8,18 @@ namespace MovieManagementSystem.Models
         public int ProducerId { get; set; }
 
         [Required(ErrorMessage = "Producer Picture is required!")]
-        public required string ProfilePictureURL { get; set; }
+        [Display(Name = "Profile Picture")]
+        public string? ProfilePictureURL { get; set; }
 
         [Required(ErrorMessage = "Producer Name is required!")]
-        public required string FullName { get; set; }
+        [Display(Name = "Full Name")]
+        public string? FullName { get; set; }
 
-        [Required(ErrorMessage = "Movie Biog is required!")]
-        public required string Bio { get; set; }
+        [Required(ErrorMessage = "Movie Bio is required!")]
+        [Display(Name = "Description")]
+        public string? Bio { get; set; }
 
         //Relationship
-        public List<Movie> Movies { get; set; }
+        public List<Movie>? Movies { get; set; }
     }
 }
