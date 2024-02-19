@@ -19,7 +19,7 @@ namespace MovieManagementSystem.Models
 
         [Required(ErrorMessage = "Movie Price is required!")]
         [Display(Name = "Movie Price")]
-        public string? Price { get; set;}
+        public double Price { get; set;}
 
         [Required(ErrorMessage = "Movie Picture is required!")]
         [Display(Name = "Movie Image")]
