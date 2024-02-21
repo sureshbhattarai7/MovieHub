@@ -16,7 +16,7 @@ namespace MovieManagementSystem.Controllers
         public async Task<IActionResult> Index()
         {
             var producers = await _context.Producers.ToListAsync();
-            return View();
+            return View(producers);
         }
     }
 }
