@@ -1,20 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieManagementSystem.Data;
+using MovieManagementSystem.Data.Services;
 
 namespace MovieManagementSystem.Controllers
 {
     public class ActorsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IActorsService _services;
 
-        public ActorsController(AppDbContext context)
+        public ActorsController(IActorsService services)
         {
-            _context = context;
+            _services = services;
         }
         public async Task<IActionResult> Index()
         {
-            var actors = await _context.Actors.ToListAsync();
+            var actors = await _services.GetAll();
             return View(actors);
         }
     }
