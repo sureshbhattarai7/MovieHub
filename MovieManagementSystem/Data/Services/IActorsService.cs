@@ -4,10 +4,10 @@ namespace MovieManagementSystem.Data.Services
 {
     public interface IActorsService
     {
-        Task<IEnumerable<Actor>> GetAll();
-        Actor GetById(int id);
-        void AddActor(Actor actor);
-        Actor Update (int id, Actor newActor);
+        Task<IEnumerable<Actor>> GetAllAsync();
+        Task<Actor> GetByIdAsync(int id);
+        Task AddActorAsync(Actor actor);
+        Task<Actor> UpdateAsync(int id, Actor newActor);
         void Delete(int id);
     }
 }
