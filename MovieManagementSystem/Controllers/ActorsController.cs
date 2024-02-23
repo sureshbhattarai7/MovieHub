@@ -16,7 +16,7 @@ namespace MovieManagementSystem.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var actors = await _services.GetAll();
+            var actors = await _services.GetAllAsync();
             return View(actors);
         }
 
@@ -33,8 +33,36 @@ namespace MovieManagementSystem.Controllers
                 return View(actor);
             }
 
-            _services.AddActor(actor);
+            await _services.AddActorAsync(actor);
             return RedirectToAction("Index");
+        }
+
+        //GET Actor: Actor/Details/ID
+        public async Task<IActionResult> Details(int id)
+        {
+            var actorDetails = await _services.GetByIdAsync(id);
+            if (actorDetails==null) return View("Actor Not found");
+            return View(actorDetails);
+        }
+
+        //Edit Actor
+        public async Task<IActionResult> Edit(int id)
+        {
+            var actorDetails = await _services.GetByIdAsync(id);
+            if (actorDetails == null) return View("NotFound");
+            return View(actorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("ActorId, ProfilePictureUrl, FullName, Bio")] Actor actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+
+            await _services.UpdateAsync(id, actor);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
