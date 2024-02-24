@@ -28,13 +28,13 @@
                 </div> &nbsp;
                 <div class="form-group">
                     <label asp-for="Bio" class="control-label"></label>
-                    <input asp-for="Bio" class="form-control"/>
+                    <textarea asp-for="Bio" class="form-control"></textarea>
                     <span asp-validation-for="Bio" class="text-danger"></span>
                 </div> &nbsp;
 
-                <div class="form-group">
+                <div class="form-group d-flex justify-content-between mt-3">
+                    <input type="submit" value="Create" class="btn btn-outline-success"/>
                     <a class="btn btn-outline-secondary" asp-action="Index">Show All Actors</a>
-                    <input type="submit" value="Create" class="btn btn-outline-success float-right"/>
                 </div>
                 </form>
 
@@ -44,15 +44,17 @@
 </div>
 
 
-@section Scripts{
+
+@section Scripts {
     <script>
-        $(document).ready(function(){
-            var output = document.getElementById("ProfilePicturePreview");
-            output.src = $("#ProfilePictureUrl").val();
+
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $('#ProfilePictureUrl').val();
         })
 
-        ${ "#ProfilePictureUrl" }.on("change", function () {
-            var output = document.getElementById("ProfilePicturePreview");
+        $('#ProfilePictureUrl').on('change', function () {
+            var output = document.getElementById('ProfilePicturePreview');
             output.src = $(this).val();
         })
     </script>
