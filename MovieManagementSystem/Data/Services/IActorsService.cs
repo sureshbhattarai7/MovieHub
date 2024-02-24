@@ -8,6 +8,6 @@ namespace MovieManagementSystem.Data.Services
         Task<Actor> GetByIdAsync(int id);
         Task AddActorAsync(Actor actor);
         Task<Actor> UpdateAsync(int id, Actor newActor);
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }
