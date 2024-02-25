@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MovieManagementSystem.Data.Base;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieManagementSystem.Models
 {
-    public class Actor
+    public class Actor:IEntityBase
     {
         [Key]
         public int Id { get; set; }
