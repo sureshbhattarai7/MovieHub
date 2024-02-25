@@ -6,7 +6,7 @@ namespace MovieManagementSystem.Models
     public class Actor
     {
         [Key]
-        public int ActorId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Actor Picture is required!")]
         [Display(Name = "Actor Picture")]

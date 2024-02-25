@@ -5,7 +5,7 @@ namespace MovieManagementSystem.Models
     public class Producer
     {
         [Key]
-        public int ProducerId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Producer Picture is required!")]
         [Display(Name = "Profile Picture")]
