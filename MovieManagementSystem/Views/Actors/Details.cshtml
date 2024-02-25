@@ -26,12 +26,12 @@
                     </div> &nbsp;
                     <div class="form-group">
                         <label asp-for="Bio" class="control-label"></label>
-                        <input asp-for="Bio" class="form-control" readonly/>
+                        <textarea asp-for="Bio" class="form-control" readonly></textarea>
                         <span asp-validation-for="Bio" class="text-danger"></span>
                     </div> &nbsp;
 
                     <div class="form-group d-flex justify-content-between mt-3">
-                        <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.ActorId">Edit</a>
+                        <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
                         <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
                     </div>
             </div>
