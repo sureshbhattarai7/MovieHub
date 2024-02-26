@@ -1,21 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieManagementSystem.Data;
+using MovieManagementSystem.Data.Services;
 
 namespace MovieManagementSystem.Controllers
 {
     public class ProducersController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IProducersService _service;
 
-        public ProducersController(AppDbContext context)
+        public ProducersController(IProducersService service)
         {
-            _context = context;
+            _service = service;
         }
 
         public async Task<IActionResult> Index()
         {
-            var producers = await _context.Producers.ToListAsync();
+            var producers = await _service.GetAllAsync();
             return View(producers);
         }
     }
