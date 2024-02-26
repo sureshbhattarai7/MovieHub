@@ -19,5 +19,13 @@ namespace MovieManagementSystem.Controllers
             var producers = await _service.GetAllAsync();
             return View(producers);
         }
+
+        //GET: Producers/Details/ID
+        public async Task<IActionResult> Details(int id)
+        {
+            var producers = await _service.GetByIdAsync(id);
+            if (producers == null) return View("NotFound");
+            return View(producers);
+        }
     }
 }
