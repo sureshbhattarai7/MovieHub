@@ -1,21 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieManagementSystem.Data;
+using MovieManagementSystem.Data.Services;
 
 namespace MovieManagementSystem.Controllers
 {
     public class CinemasController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ICinemasService _service;
 
-        public CinemasController(AppDbContext context)
+        public CinemasController(ICinemasService service)
         {
-            _context = context;
+            _service = service;
         }
 
         public async Task<IActionResult> Index()
         {
-            var cinemas = await _context.Cinemas.ToListAsync();
+            var cinemas = await _service.GetAllAsync();
             return View(cinemas);
         }
     }
