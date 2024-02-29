@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MovieManagementSystem.Data;
 using MovieManagementSystem.Data.Services;
+using MovieManagementSystem.Models;
 
 namespace MovieManagementSystem.Controllers
 {
@@ -18,6 +19,24 @@ namespace MovieManagementSystem.Controllers
         {
             var cinemas = await _service.GetAllAsync();
             return View(cinemas);
+        }
+
+        //GET: Cinemas/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("CinemaLogo, CinemaName, Description")] Cinema cinema)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(cinema);
+            }
+
+            await _service.AddActorAsync(cinema);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
