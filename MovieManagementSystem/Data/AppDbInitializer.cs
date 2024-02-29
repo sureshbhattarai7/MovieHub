@@ -11,7 +11,7 @@ namespace MovieManagementSystem.Data
             using var serviceScope = applicationBuilder.ApplicationServices.CreateScope();
             var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
-                context.Database.EnsureCreated();
+            context.Database.EnsureCreated();
 
                 //Cinema
                 if (!context.Cinemas.Any())
@@ -297,7 +297,6 @@ namespace MovieManagementSystem.Data
                         }
                     });
                     context.SaveChanges();
-                    Console.WriteLine("Database seeded successfully!");
                 }
             }
             
