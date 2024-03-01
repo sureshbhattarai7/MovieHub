@@ -38,5 +38,13 @@ namespace MovieManagementSystem.Controllers
             await _service.AddActorAsync(cinema);
             return RedirectToAction(nameof(Index));
         }
+
+        //GET: Cinemas/Details/ID
+        public async Task<IActionResult> Details(int id)
+        {
+            var cinemas = await _service.GetByIdAsync(id);
+            if (cinemas == null) return View("NotFound");
+            return View(cinemas);
+        }
     }
 }
