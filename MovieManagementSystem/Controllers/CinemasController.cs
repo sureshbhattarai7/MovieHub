@@ -46,5 +46,29 @@ namespace MovieManagementSystem.Controllers
             if (cinemas == null) return View("NotFound");
             return View(cinemas);
         }
+
+        //GET: Cinemas/Edit/ID
+        public async Task<IActionResult> Edit(int id)
+        {
+            var cinemas = await _service.GetByIdAsync(id);
+            if (cinemas == null) return View("NotFound");
+            return View(cinemas);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Cinema cinema)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(cinema);
+            }
+
+            if (id == cinema.Id)
+            {
+                await _service.UpdateAsync(id, cinema);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(cinema);
+        }
     }
 }
