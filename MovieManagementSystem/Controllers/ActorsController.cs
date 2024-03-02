@@ -54,15 +54,19 @@ namespace MovieManagementSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("ActorId, ProfilePictureUrl, FullName, Bio")] Actor actor)
+        public async Task<IActionResult> Edit(int id, Actor actor)
         {
             if (!ModelState.IsValid)
             {
                 return View(actor);
             }
 
-            await _services.UpdateAsync(id, actor);
-            return RedirectToAction(nameof(Index));
+            if (id == actor.Id)
+            {
+                await _services.UpdateAsync(id, actor);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(actor);
         }
 
         //Delete Actor
