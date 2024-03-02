@@ -70,5 +70,25 @@ namespace MovieManagementSystem.Controllers
             }
             return View(cinema);
         }
+
+        //GET: Cinemas/Delete/ID
+        public async Task<IActionResult> Delete(int id)
+        {
+            var cinemas = await _service.GetByIdAsync(id);
+            if (cinemas == null) return View("NotFound");
+            return View(cinemas);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(id);
+            }
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
