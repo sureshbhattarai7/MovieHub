@@ -1,0 +1,53 @@
+﻿@model Cinema
+
+@{
+    ViewData["Title"] = "Delete Cinema";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <h2>Delete Confirmation of @Model.CinemaName</h2>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <div class="form-group text-center">
+                    <img class="border-info rounded-circle" style="max-width: 150px" id="CinemaLogoPreview" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CinemaLogo" class="control-label"></label>
+                    <input asp-for="CinemaLogo" class="form-control" readonly />
+                    <span asp-validation-for="CinemaLogo" class="text-danger"></span>
+                </div> &nbsp;
+                <div class="form-group">
+                    <label asp-for="CinemaName" class="control-label"></label>
+                    <input asp-for="CinemaName" class="form-control" readonly />
+                    <span asp-validation-for="CinemaName" class="text-danger"></span>
+                </div> &nbsp;
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" readonly />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div> &nbsp;
+
+                <div class="form-group d-flex justify-content-between mt-3">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Confirm" class="btn btn-danger" />
+                    </form>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById("CinemaLogoPreview");
+            output.src = $("#CinemaLogo").val();
+        })
+    </script>
+}
