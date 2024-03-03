@@ -1,10 +1,11 @@
-﻿using MovieManagementSystem.Data.Enums;
+﻿using MovieManagementSystem.Data.Base;
+using MovieManagementSystem.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieManagementSystem.Models
 {
-    public class Movie
+    public class Movie:IEntityBase
     {
         [Key]
         public int Id { get; set; }
