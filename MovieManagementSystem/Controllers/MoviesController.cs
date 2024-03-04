@@ -19,5 +19,12 @@ namespace MovieManagementSystem.Controllers
             var movies = await _service.GetAllAsync(n=>n.Cinema);
             return View(movies);
         }
+
+        //GET: Movies/Details/ID
+        public async Task<IActionResult> Details(int id)
+        {
+            var movieDetail = await _service.GetByIdAsync(id);
+            return View(movieDetail);
+        }
     }
 }
