@@ -27,18 +27,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Actors" asp-action="Index"><i class="bi bi-universal-access"></i>Actors</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Producers" asp-action="Index"><i class="bi bi-headphones"></i>Produxers</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Producers" asp-action="Index"><i class="bi bi-headphones"></i>Producers</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-tv"></i>Cinemas</a>
                         </li>
                     </ul>
 
-                    <form class="form-inline my-2 my-lg-0" asp-controller="Movies" asp-action="Filter" style="padding-right: 25px">
-                        <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..."/>
+                    <form class="form-group d-flex my-2 my-lg-0" asp-controller="Movies" asp-action="Filter" style="padding-right: 25px">
+                        <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..." />
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
                     </form>
-
                 </div>
             </div>
         </nav>
