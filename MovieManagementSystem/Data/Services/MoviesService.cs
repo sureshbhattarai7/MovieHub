@@ -13,6 +13,36 @@ namespace MovieManagementSystem.Data.Services
             _context = context;
         }
 
+        public async Task AddNewMovieAsync(NewMovieVM data)
+        {
+            var newMovie = new Movie
+            {
+                MovieName = data.MovieName,
+                MovieDescription = data.MovieDescription,
+                Price = data.Price,
+                StartDate = data.StartDate,
+                EndDate = data.EndDate,
+                ImageURL = data.ImageURL,
+                CinemaId = data.CinemaId,
+                ProducerId = data.ProducerId,
+                MovieCategory = data.MovieCategory,
+            };
+            await _context.Movies.AddAsync(newMovie);
+            await _context.SaveChangesAsync();
+
+            //Add Movie Actor
+            foreach(var actorId in data.ActorIds)
+            {
+                var newActorMovie = new Actor_Movie
+                {
+                    MovieId = newMovie.Id,
+                    ActorId = actorId
+                };
+                await _context.Actors_Movies.AddAsync(newActorMovie);
+            }
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<Movie> GetMovieByIdAsync(int id)
         {
             var movieDetails = await _context.Movies
