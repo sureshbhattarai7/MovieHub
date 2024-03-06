@@ -4,7 +4,7 @@
     ViewData["Title"] = "Movie Details";
 }
 
-<div class="row">
+<div class="row justify-content-center">
 
     <div class="col-md-8 offset-2">
         <div class="card mb-3" style="max-width: 540px;">
@@ -57,7 +57,7 @@
                         <p class="card-text">
                             <b>Actors: </b>
                             <hr />
-                            <div class="row">
+                            <div class="row form-group d-flex justify-content-around mt-3">
                                 @foreach(var actor in Model.Actors_Movies)
                                 {
                                     <div class="column text-center">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="card-footer ">
-                        <p class="card-text">
+                        <p class="card-text form-group d-flex justify-content-between mt-3">
                             <a class="btn btn-outline-primary float-right" asp-action="Index">
                                 <i class="bi bi-eye-fill"></i> Back To List
                             </a>
