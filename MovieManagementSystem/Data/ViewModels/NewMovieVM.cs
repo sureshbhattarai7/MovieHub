@@ -7,6 +7,8 @@ namespace MovieManagementSystem.Models
 {
     public class NewMovieVM
     {
+        public int Id { get; set; }
+
         [Display(Name = "Movie Name")]
         [Required(ErrorMessage = "Movie Name is required!")]
         public string? MovieName { get; set; }
