@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MovieManagementSystem.Data;
 using MovieManagementSystem.Data.Services;
 using MovieManagementSystem.Models;
@@ -21,6 +22,17 @@ namespace MovieManagementSystem.Controllers
         {
             var movies = await _service.GetAllAsync(n=>n.Cinema);
             return View(movies);
+        }
+
+        public async Task<IActionResult> Filter(string searchString)
+        {
+            var allMovies = await _service.GetAllAsync(n => n.Cinema);
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = allMovies.Where(n => n.MovieName.Contains(searchString) || n.MovieDescription.Contains(searchString)).ToList();
+                return View("Index", filteredResult);
+            }
+            return View("Index", allMovies);
         }
 
         //GET: Movies/Details/ID
