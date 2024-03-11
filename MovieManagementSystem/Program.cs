@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MovieManagementSystem.Data;
+using MovieManagementSystem.Data.Cart;
 using MovieManagementSystem.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,9 @@ builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
+
+builder.Services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 
 var app = builder.Build();
 
