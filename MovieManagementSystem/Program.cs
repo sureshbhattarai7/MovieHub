@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MovieManagementSystem.Data;
 using MovieManagementSystem.Data.Cart;
 using MovieManagementSystem.Data.Services;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ builder.Services.AddScoped<IMoviesService, MoviesService>();
 builder.Services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 
@@ -36,6 +39,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 
