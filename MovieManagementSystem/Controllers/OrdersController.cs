@@ -30,5 +30,17 @@ namespace MovieManagementSystem.Controllers
 
             return View(response);
         }
+
+        public async Task<RedirectToActionResult> AddItemToShoppingCart(int id)
+        {
+            var item = await _service.GetByIdAsync(id);
+
+            if(item!=null)
+            {
+                _shoppingCart.AddItemToCart(item);
+            }
+
+            return RedirectToAction(nameof(ShoppingCart));
+        }
     }
 }
