@@ -74,3 +74,6 @@ namespace MovieManagementSystem.Data.Cart
 
     }
 }
+
+
+
