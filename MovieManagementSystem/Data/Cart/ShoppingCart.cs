@@ -20,9 +20,10 @@ namespace MovieManagementSystem.Data.Cart
             var context = services.GetService<AppDbContext>();
 
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            int parsedCartId = Math.Abs(cartId.GetHashCode());
             session.SetString("CartId", cartId);
 
-            return new ShoppingCart(context) { ShoppingCartId = int.Parse(cartId) };
+            return new ShoppingCart(context) { ShoppingCartId = parsedCartId };
         }
 
         public void AddItemToCart(Movie movie)
