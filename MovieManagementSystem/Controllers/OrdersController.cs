@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Mvc;
 using MovieManagementSystem.Data;
 using MovieManagementSystem.Data.Cart;
 using MovieManagementSystem.Data.Services;
@@ -10,11 +11,13 @@ namespace MovieManagementSystem.Controllers
     {
         public readonly IMoviesService _service;
         public readonly ShoppingCart _shoppingCart;
+        private readonly IOrdersService _ordersService;
 
-        public OrdersController(IMoviesService service, ShoppingCart shoppingCart)
+        public OrdersController(IMoviesService service, ShoppingCart shoppingCart, IOrdersService ordersService)
         {
             _service = service;
             _shoppingCart = shoppingCart;
+            _ordersService = ordersService;
         }
 
         public IActionResult ShoppingCart()
@@ -53,6 +56,17 @@ namespace MovieManagementSystem.Controllers
             }
 
             return RedirectToAction(nameof(ShoppingCart));
+        }
+
+        public async Task<IActionResult> CompleteOrder()
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            string userId = "";
+            string email = "";
+
+            await _ordersService.StoreOrderAsync(items, userId, email);
+            await _shoppingCart.ClearShoppingCartAsync();
+            return View("OrderCompleted");
         }
     }
 }
