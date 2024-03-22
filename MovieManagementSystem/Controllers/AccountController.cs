@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MovieManagementSystem.Data;
+using MovieManagementSystem.Data.ViewModels;
 using MovieManagementSystem.Models;
 
 namespace MovieManagementSystem.Controllers
@@ -17,9 +18,6 @@ namespace MovieManagementSystem.Controllers
             _signInManager = signInManager;
             _context = context;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Login() => View(new LoginVM());
     }
 }
