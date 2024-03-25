@@ -47,5 +47,12 @@ namespace MovieManagementSystem.Controllers
         }
 
         public IActionResult Signup() => View(new SignupVM());
+
+        [HttpPost]
+        public async Task<IActionResult> Logout() 
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Movies");
+        }
     }
 }
