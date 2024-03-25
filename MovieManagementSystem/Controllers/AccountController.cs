@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MovieManagementSystem.Data;
 using MovieManagementSystem.Data.ViewModels;
 using MovieManagementSystem.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MovieManagementSystem.Controllers
 {
@@ -44,5 +45,7 @@ namespace MovieManagementSystem.Controllers
             TempData["Error"] = "Wrong Credentials. Please try again!";
             return View(loginVM);
         }
+
+        public IActionResult Signup() => View(new SignupVM());
     }
 }
