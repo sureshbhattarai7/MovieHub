@@ -12,7 +12,10 @@
                     <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
                     <th>@Html.DisplayNameFor(model => model.FullName)</th>
                     <th>@Html.DisplayNameFor(model => model.Bio)</th>
-                    <th>Actions</th>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <th>Actions</th>
+                    }
                 </tr>
             </thead>
 
@@ -30,13 +33,17 @@
                             @Html.DisplayFor(modelItem => items.Bio)
                         </td>
 
-                        <td class="align-middle">
-                            <div class="btn-group">
-                                <a class="btn btn-outline-primary btn-group" asp-action="Edit" asp-route-id="@items.Id"><i class="bi bi-pencil-square"></i>Edit</a> &nbsp&nbsp
-                                <a class="btn btn-outline-info btn-group" asp-action="Details" asp-route-id="@items.Id"><i class="bi bi-eye"></i>Details</a> &nbsp&nbsp
-                                <a class="btn btn-danger text-white btn-group" asp-action="Delete" asp-route-id="@items.Id"><i class="bi bi-trash"></i>Delete</a> &nbsp&nbsp
-                            </div>
-                        </td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <td class="align-middle">
+                                <div class="btn-group">
+                                    <a class="btn btn-outline-primary btn-group" asp-action="Edit" asp-route-id="@items.Id"><i class="bi bi-pencil-square"></i>Edit</a> &nbsp&nbsp
+                                    <a class="btn btn-outline-info btn-group" asp-action="Details" asp-route-id="@items.Id"><i class="bi bi-eye"></i>Details</a> &nbsp&nbsp
+                                    <a class="btn btn-danger text-white btn-group" asp-action="Delete" asp-route-id="@items.Id"><i class="bi bi-trash"></i>Delete</a> &nbsp&nbsp
+                                </div>
+                            </td>
+                        }
+                        
                     </tr>
                 }
             </tbody>
