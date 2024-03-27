@@ -4,6 +4,7 @@ using MovieManagementSystem.Data;
 using MovieManagementSystem.Data.Cart;
 using MovieManagementSystem.Data.Services;
 using MovieManagementSystem.Data.ViewModels;
+using System.Security.Claims;
 
 namespace MovieManagementSystem.Controllers
 {
@@ -22,8 +23,10 @@ namespace MovieManagementSystem.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string userId = "";
-            var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userRole = User.FindFirstValue(ClaimTypes.Role);
+
+            var orders = await _ordersService.GetOrdersByUserIdAndRoleAsync(userId, userRole);
             return View(orders);
         }
 
@@ -68,8 +71,8 @@ namespace MovieManagementSystem.Controllers
         public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();
-            string userId = "";
-            string email = "";
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string email = User.FindFirstValue(ClaimTypes.Email);
 
             await _ordersService.StoreOrderAsync(items, userId, email);
             await _shoppingCart.ClearShoppingCartAsync();
